@@ -1,0 +1,187 @@
+:root{
+  --navy-deep:#003778;
+  --navy:#003778;
+  --paper:#FAF7F0;
+  --paper-dim:#F0EBDF;
+  --ink:#1A1A1A;
+  --muted:#6B7280;
+  --line:#D9D2BF;
+  --red:#A6192E;
+  --gold:#B08D57;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  background:
+    radial-gradient(circle at 15% 10%, rgba(23,61,115,0.06), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(166,25,46,0.05), transparent 45%),
+    var(--paper);
+  color:var(--ink);
+  font-family:'Inter', sans-serif;
+  min-height:100vh;
+  display:flex;
+}
+
+.card{
+  position:relative;
+  width:100%;
+  max-width:100%;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(15,37,71,0.06), 0 20px 45px -18px rgba(15,37,71,0.35);
+  border:1px solid var(--line);
+}
+
+/* ---------- header / institution ---------- */
+.header{
+  background:linear-gradient(135deg, var(--navy-deep), var(--navy) 70%);
+  padding:22px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+/* solo imagen, sin texto, centrada */
+.header-logo{
+  max-height:64px;
+  max-width:220px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+}
+
+.header::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-3px;
+  height:3px;
+  background:var(--red);
+}
+
+/* ---------- identity block ---------- */
+.identity{
+  padding:26px 22px 20px;
+  text-align:center;
+}
+.name{
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size:1.5rem;
+  line-height:1.2;
+  color:var(--ink);
+}
+.meta-row{
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.meta-item{
+  font-size:0.85rem;
+  color:var(--ink);
+}
+.meta-item span{
+  font-family:'Roboto', sans-serif;
+  font-weight:300;
+  color:var(--ink);
+  letter-spacing:0.02em;
+}
+
+/* ---------- faculty card (banner + foto tipo carta) ---------- */
+.faculty-card{
+  margin:0 22px 24px;
+  border:1px solid var(--navy);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.banner{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:14px 18px;
+  font-family:'Roboto', sans-serif;
+  font-weight:700;
+  font-size:0.95rem;
+  letter-spacing:0.01em;
+  line-height:1.35;
+}
+
+/* ---------- photo ---------- */
+.photo-wrap{
+  padding:24px;
+  display:flex;
+  justify-content:center;
+  position:relative;
+  background:#fff;
+}
+.photo{
+  width:190px;
+  height:230px;
+  border-radius:6px;
+  border:3px solid var(--red);
+  background:linear-gradient(160deg, #E7E2D4, #D8D2C1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.photo svg{width:72%;height:72%;color:#A79E8A;}
+
+/* ---------- footer ---------- */
+.footer{
+  padding:16px 22px 22px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  background:var(--paper-dim);
+}
+.footer-label{
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.footer-code{
+  margin-top:5px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.78rem;
+  color:var(--navy-deep);
+  font-weight:600;
+  word-break:break-all;
+}
+
+/* ---------- borde perforado ---------- */
+.perf{
+  height:14px;
+  background-image:radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
+  background-size:16px 16px;
+  background-position:center;
+  background-color:#fff;
+}
+
+/* ---------- desktop layout ---------- */
+@media (min-width:860px){
+  .card{
+    max-width:760px;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    grid-template-rows:auto 1fr auto;
+  }
+  .header{grid-column:1 / -1;}
+  .faculty-card{
+    grid-column:1;
+    grid-row:2 / 4;
+    margin:24px;
+    align-self:start;
+  }
+  .photo{width:100%;height:280px;}
+  .identity{grid-column:2;grid-row:2;text-align:left;padding:30px 30px 10px;}
+  .name{font-size:1.9rem;}
+  .meta-row{flex-direction:row;gap:28px;flex-wrap:wrap;}
+  .footer{grid-column:1 / -1;text-align:left;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .perf{display:none;}
+}
